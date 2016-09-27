@@ -24,8 +24,7 @@
   "scripts": {
     "benchmark": "grunt benchmark",
     "test": "grunt test",
-    "prepublish": "grunt build",
-    "install": "grunt build"
+    "prepublish": "grunt build"
   },
   "devDependencies": {
     "coffee-script": "~1.6.3",
