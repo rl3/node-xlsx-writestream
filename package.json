@@ -25,7 +25,7 @@
     "benchmark": "grunt benchmark",
     "test": "grunt test",
     "prepublish": "grunt build",
-    "install": "npm-git install"
+    "preinstall": "grunt build"
   },
   "devDependencies": {
     "coffee-script": "~1.6.3",
@@ -48,10 +48,5 @@
   ],
   "dependencies": {
     "archiver": "0.5.1",
-    "npm-git-install": "^0.2.0"
-  },
-  "gitDependencies": {
-    "private-package-name": "git@github.com:rl3/node-xlsx-writestream.git",
-    "public-package-name": "https://github.com/rl3/node-xlsx-writestream.git"
   }
 }
