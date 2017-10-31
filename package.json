@@ -1,7 +1,7 @@
 {
   "name": "xlsx-writestream",
   "description": "Streaming XLSX writer. Forked from rubenv/node-xlsx-writer.",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "homepage": "https://github.com/STRML/node-xlsx-writestream",
   "author": "STRML (Samuel Reed)",
   "repository": {
