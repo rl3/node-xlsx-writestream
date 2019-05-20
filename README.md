@@ -19,24 +19,28 @@ You can install the latest version via npm:
 
 Require the module:
 
-    var xlsx = require('xlsx-writestream');
+```js
+var xlsx = require('xlsx-writestream');
+```
 
 Write a spreadsheet:
 
-    var data = [
-        {
-            "Name": "Bob",
-            "Location": "Sweden"
-        },
-        {
-            "Name": "Alice",
-            "Location": "France"
-        }
-    ];
+```js
+var data = [
+    {
+        "Name": "Bob",
+        "Location": "Sweden"
+    },
+    {
+        "Name": "Alice",
+        "Location": "France"
+    }
+];
+```
 
-    xlsx.write('mySpreadsheet.xlsx', data, function (err) {
-        // Error handling here
-    });
+xlsx.write('mySpreadsheet.xlsx', data, function (err) {
+    // Error handling here
+});
 
 This will write a spreadsheet like this:
 
@@ -54,63 +58,66 @@ in the first row.
 You can also use the full API manually. This allows you to build the
 spreadsheet incrementally:
 
-    var XLSXWriter = require('xlsx-writestream');
-    var fs = require('fs');
+```js
+var XLSXWriter = require('xlsx-writestream');
+var fs = require('fs');
 
-    var writer = new XLSXWriter('mySpreadsheet.xlsx', {} /* options */);
+var writer = new XLSXWriter('mySpreadsheet.xlsx', {} /* options */);
 
-    // After instantiation, you can grab the readstream at any time.
-    writer.getReadStream().pipe(fs.createWriteStream('mySpreadsheet.xlsx'));
+// After instantiation, you can grab the readstream at any time.
+writer.getReadStream().pipe(fs.createWriteStream('mySpreadsheet.xlsx'));
 
-    // Add some rows
-    writer.addRow({
-        "Name": "Bob",
-        "Location": "Sweden"
-    });
-    writer.addRow({
-        "Name": "Alice",
-        "Location": "France"
-    });
+// Add some rows
+writer.addRow({
+    "Name": "Bob",
+    "Location": "Sweden"
+});
+writer.addRow({
+    "Name": "Alice",
+    "Location": "France"
+});
 
-    // Add a row with a hyperlink
-    writer.addRow({
-        "Name": {value: "Bill", hyperlink: "http://www.thegatesnotes.com"},
-        "Location": "Seattle, Washington"
-    })
+// Add a row with a hyperlink
+writer.addRow({
+    "Name": {value: "Bill", hyperlink: "http://www.thegatesnotes.com"},
+    "Location": "Seattle, Washington"
+})
 
-    // Optional: Adjust column widths
-    writer.defineColumns([
-        { width: 30 }, // width is in 'characters'
-        { width: 10 }
-    ])
+// Optional: Adjust column widths
+writer.defineColumns([
+    { width: 30 }, // width is in 'characters'
+    { width: 10 }
+])
 
-    // Finalize the spreadsheet. If you don't do this, the readstream will not end.
-    writer.finalize();
+// Finalize the spreadsheet. If you don't do this, the readstream will not end.
+writer.finalize();
+```
 
 ## More Streaming Usage
 
 For example, you may want to stream data from a remote API into an XLSX file:
 
-    var XLSXWriter = require('xlsx-writestream');
-    var JSONStream = require('JSONStream');
-    var request = require('request');
-    var fs = require('fs');
+```js
+var XLSXWriter = require('xlsx-writestream');
+var JSONStream = require('JSONStream');
+var request = require('request');
+var fs = require('fs');
 
-    var writer = new XLSXWriter();
+var writer = new XLSXWriter();
 
-    writer.getReadStream().pipe(fs.createWriteStream('npm-registry.xlsx'));
+writer.getReadStream().pipe(fs.createWriteStream('npm-registry.xlsx'));
 
-    var rowStream = request('http://isaacs.couchone.com/registry/_all_docs')
-      .pipe(JSONStream.parse('rows.*'));
+var rowStream = request('http://isaacs.couchone.com/registry/_all_docs')
+  .pipe(JSONStream.parse('rows.*'));
 
-    rowStream.on('data', function(row) {
-      writer.addRow(row);
-    });
+rowStream.on('data', function(row) {
+  writer.addRow(row);
+});
 
-    rowStream.on('end', function() {
-      writer.finalize();
-    });
-
+rowStream.on('end', function() {
+  writer.finalize();
+});
+```
 
 ## Data Types
 
@@ -118,14 +125,16 @@ Numbers, Strings, and Dates are automatically converted when inputted. Simply
 use their native types. Additionally, any data item can be turned into a hyperlink
 by enclosing it within an object with the keys `value, hyperlink`.
 
-    writer.addRow({
-        "A String Column" : "A String Value",
-        "A Number Column" : 12345,
-        "A Date Column" : new Date(1999,11,31)
-        "A String column with a hyperlink" : {value: "A String Value", hyperlink: "http://www.google.com"}
-        "A Number column with a hyperlink" : {value: 12345, hyperlink: "http://www.google.com"}
-        "A Date column with a hyperlink" : {value: new Date(1999,11,31), hyperlink: "http://www.google.com"}
-    })
+```js
+writer.addRow({
+    "A String Column" : "A String Value",
+    "A Number Column" : 12345,
+    "A Date Column" : new Date(1999,11,31)
+    "A String column with a hyperlink" : {value: "A String Value", hyperlink: "http://www.google.com"}
+    "A Number column with a hyperlink" : {value: 12345, hyperlink: "http://www.google.com"}
+    "A Date column with a hyperlink" : {value: new Date(1999,11,31), hyperlink: "http://www.google.com"}
+})
+```
 
 ## Speed
 

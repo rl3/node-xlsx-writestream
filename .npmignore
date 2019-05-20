@@ -4,3 +4,4 @@ Gruntfile.coffee
 benchmarks
 test
 tmp
+yarn.lock

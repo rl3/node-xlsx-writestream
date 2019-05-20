@@ -1,7 +1,7 @@
 {
   "name": "xlsx-writestream",
   "description": "Streaming XLSX writer. Forked from rubenv/node-xlsx-writer.",
-  "version": "0.4.0",
+  "version": "0.5.1",
   "homepage": "https://github.com/STRML/node-xlsx-writestream",
   "author": "STRML (Samuel Reed)",
   "repository": {
@@ -19,7 +19,7 @@
   ],
   "main": "index.js",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 4.0.0"
   },
   "scripts": {
     "benchmark": "grunt benchmark",
@@ -28,16 +28,16 @@
   },
   "devDependencies": {
     "coffee-script": "~1.6.3",
-    "grunt-contrib-watch": "~0.3.1",
-    "grunt-contrib-coffee": "~0.6.0",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt": "~0.4.0",
-    "grunt-mocha-cli": "~1.0.1",
-    "grunt-mkdir": "~0.1.0",
     "excel": "0.0.60",
-    "underscore": "~1.4.4",
+    "grunt": "~0.4.0",
+    "grunt-benchmark": "~0.2.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-coffee": "~0.6.0",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-mkdir": "~0.1.0",
+    "grunt-mocha-cli": "~1.0.1",
     "grunt-release": "~0.3.1",
-    "grunt-benchmark": "~0.2.0"
+    "underscore": "~1.4.4"
   },
   "keywords": [
     "xlsx",
@@ -45,6 +45,6 @@
     "spreadsheet"
   ],
   "dependencies": {
-    "archiver": "0.5.1"
+    "archiver": "2.1.0"
   }
 }
