@@ -24,13 +24,11 @@
   "scripts": {
     "benchmark": "grunt benchmark",
     "test": "grunt test",
-    "prepublish": "grunt build",
-    "install": "( [ -f ./Gruntfile.coffee ] && [ ! -d ./lib ] && npm install . && grunt build ) || echo \"SKIP: NON GIT SOURCE\""
+    "prepublish": "grunt build"
   },
   "devDependencies": {
     "coffee-script": "~1.6.3",
     "excel": "0.0.60",
-    "grunt": "~0.4.0",
     "grunt-benchmark": "~0.2.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-coffee": "~0.6.0",
@@ -46,6 +44,7 @@
     "spreadsheet"
   ],
   "dependencies": {
+    "grunt": "~0.4.0",
     "archiver": "2.1.0"
   }
 }
