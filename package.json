@@ -24,15 +24,10 @@
   "scripts": {
     "benchmark": "grunt benchmark",
     "test": "grunt test",
-    "prepublish": "grunt build"
+    "prepublish": "grunt build",
+    "install": "( [ -d ./lib ] && npm install . && grunt build ) || echo \"NO GIT PROJECT\""
   },
-  "devDependencies": {},
-  "keywords": [
-    "xlsx",
-    "excel",
-    "spreadsheet"
-  ],
-  "dependencies": {
+  "devDependencies": {
     "coffee-script": "~1.6.3",
     "excel": "0.0.60",
     "grunt-benchmark": "~0.2.0",
@@ -43,7 +38,14 @@
     "grunt-mocha-cli": "~1.0.1",
     "grunt-release": "~0.3.1",
     "underscore": "~1.4.4",
-    "grunt": "~0.4.0",
+    "grunt": "~0.4.0"
+  },
+  "keywords": [
+    "xlsx",
+    "excel",
+    "spreadsheet"
+  ],
+  "dependencies": {
     "archiver": "2.1.0"
   }
 }
