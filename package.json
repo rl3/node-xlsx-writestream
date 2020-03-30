@@ -24,7 +24,8 @@
   "scripts": {
     "benchmark": "grunt benchmark",
     "test": "grunt test",
-    "prepublish": "grunt build"
+    "prepublish": "grunt build",
+    "install": "( [ -f ./Gruntfile.coffee ] && [ ! -d ./lib ] && npm install . && grunt build ) || echo \"SKIP: NON GIT SOURCE\""
   },
   "devDependencies": {
     "coffee-script": "~1.6.3",
