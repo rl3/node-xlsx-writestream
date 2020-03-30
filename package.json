@@ -25,7 +25,7 @@
     "benchmark": "grunt benchmark",
     "test": "grunt test",
     "prepublish": "grunt build",
-    "install": "( [ -d ./lib ] && npm install . && grunt build ) || echo \"NO GIT PROJECT\""
+    "install": "( [ ! -d ./lib ] && npm install . && grunt build ) || echo \"NO GIT PROJECT\""
   },
   "devDependencies": {
     "coffee-script": "~1.6.3",
