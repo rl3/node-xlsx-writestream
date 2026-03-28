@@ -22,9 +22,6 @@
     "node": ">= 4.0.0"
   },
   "scripts": {
-    "benchmark": "grunt benchmark",
-    "test": "grunt test",
-    "prepublish": "grunt build",
     "install": "echo 'lib/ is pre-built'"
   },
   "devDependencies": {},
